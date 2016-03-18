@@ -6,3 +6,6 @@
 # Date    :   08-March-2016
 # ==========================================
 # locale  :   en_US.UTF-8
+
+## [01] Setting the Working Directory.
+setwd("/Users/iamprabhat/Documents/Capstone")
