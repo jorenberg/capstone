@@ -47,3 +47,22 @@ data.frame(blogs = length(blogs), news = length(news), twitter = length(twitter)
 #   blogs   news      twitter
 # 1 899288  1010242   2360148
 # ---------------------------
+
+## Sampling of SwiftKey Data.
+## ==========================
+## [02] working with RWeka:
+## An R interface to Weka:
+## Weka is a collection of machine learning algorithms for data mining.
+## https://cran.r-project.org/web/packages/RWeka/index.html
+library(RWeka)
+Tokenizer <- function(x) NGramTokenizer(x, Weka_control(min = 1, max = 1))
+
+# Due to the large amount of text and limited computational resources,
+# sampling is performed. 10000 lines per file is randomly sampled and saved to disk.
+sample_blogs    <- sample(blogs,    10000)
+sample_news     <- sample(news,     10000)
+sample_twitter  <- sample(twitter,  10000)
+
+# To write sample data.
+writeLines(c(sample_twitter, sample_news, sample_blogs), "./sample_data.txt")
+# -- 4.8 MB.
