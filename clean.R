@@ -66,3 +66,31 @@ sample_twitter  <- sample(twitter,  10000)
 # To write sample data.
 writeLines(c(sample_twitter, sample_news, sample_blogs), "./sample_data.txt")
 # -- 4.8 MB.
+
+## Summary Statistics for the 3 files.
+## ===================================
+blogwords    <- sum(stri_count_words(blogs))
+newswords    <- sum(stri_count_words(news))
+twitterwords <- sum(stri_count_words(twitter))
+words        <- c(blogwords, newswords, twitterwords)
+
+bloglines    <- length(blogs)
+newslines    <- length(news)
+twitterlines <- length(twitter)
+lines        <- c(bloglines, newslines, twitterlines)
+
+blogmaxc     <- max(nchar(blogs))
+newsmaxc     <- max(nchar(news))
+twittermaxc  <- max(nchar(twitter))
+maxchars     <- c(blogmaxc, newsmaxc, twittermaxc)
+
+blogmaxw     <- max(stri_count_words(blogs))
+newsmaxw     <- max(stri_count_words(news))
+twittermaxw  <- max(stri_count_words(twitter))
+maxwords     <- c(blogmaxw, newsmaxw, twittermaxw)
+
+FileSumm     <- data.frame("File Name" = c("en_US.blogs", "en_US.news", "en_US.twitter"),
+                           NumberLines = lines,
+                           NumberWords = words,
+                           MaxChars = maxchars,
+                           MaxWords = maxwords)
