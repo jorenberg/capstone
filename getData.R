@@ -9,3 +9,6 @@
 
 ## [01] Setting the Working Directory.
 setwd("/Users/iamprabhat/Documents/Capstone")
+
+## [02] List the Files in a Directory/Folder.
+list.dirs()
