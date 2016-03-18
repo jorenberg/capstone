@@ -15,3 +15,10 @@ list.dirs()
 
 ## [03] Creating a Directory/Folder.
 dir.create("data", showWarnings = TRUE)
+
+## [04] Specify the source and destination of the download.
+fileURL <- "https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"
+download.file(fileURL, destfile = "data/SwiftKey.zip", method = "curl")
+unlink(fileURL)
+# Unzip the data.
+unzip("SwiftKey.zip")
