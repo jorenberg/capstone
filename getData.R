@@ -12,3 +12,6 @@ setwd("/Users/iamprabhat/Documents/Capstone")
 
 ## [02] List the Files in a Directory/Folder.
 list.dirs()
+
+## [03] Creating a Directory/Folder.
+dir.create("data", showWarnings = TRUE)
