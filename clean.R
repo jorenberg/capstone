@@ -94,3 +94,16 @@ FileSumm     <- data.frame("File Name" = c("en_US.blogs", "en_US.news", "en_US.t
                            NumberWords = words,
                            MaxChars = maxchars,
                            MaxWords = maxwords)
+
+# Summaries
+summary(FileSumm)
+
+# File.Name           NumberLines       NumberWords         MaxChars        MaxWords
+# -------------------------------------------------------------------------------------
+# en_US.blogs  :1   Min.   : 899288   Min.   :30195133   Min.   :  213   Min.   :  61.0
+# en_US.news   :1   1st Qu.: 954765   1st Qu.:32605938   1st Qu.: 5798   1st Qu.: 928.5
+# en_US.twitter:1   Median :1010242   Median :35016742   Median :11384   Median :1796.0
+#                   Mean   :1423226   Mean   :34455214   Mean   :17477   Mean   :2861.0
+#                   3rd Qu.:1685195   3rd Qu.:36585254   3rd Qu.:26110   3rd Qu.:4261.0
+#                   Max.   :2360148   Max.   :38153767   Max.   :40835   Max.   :6726.0
+# -------------------------------------------------------------------------------------
