@@ -22,3 +22,6 @@ download.file(fileURL, destfile = "data/SwiftKey.zip", method = "curl")
 unlink(fileURL)
 # Unzip the data.
 unzip("SwiftKey.zip")
+
+## [05] List the Files in a Directory/Folder.
+list.dirs(path = "./final", full.names = TRUE, recursive = TRUE)
