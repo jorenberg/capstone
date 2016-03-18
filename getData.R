@@ -25,3 +25,6 @@ unzip("SwiftKey.zip")
 
 ## [05] List the Files in a Directory/Folder.
 list.dirs(path = "./final", full.names = TRUE, recursive = TRUE)
+
+## [06] Information about Files.
+file.info("./final/en_US")
