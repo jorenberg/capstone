@@ -150,3 +150,20 @@ sampler <- function(chunk, percent) {
   
   return(chunk[sample.index])
 }
+
+# Let's start off with a 05% sample data.
+#                       -----
+# //1-US.blogs//
+sampleBlogs <- sampler(blogs, .05)
+# Write Lines to a Connection.
+writeLines(c(sampleBlogs), "./sampleBlogs.txt")
+
+# //2-US.news//
+sampleNews <- sampler(news, .05)
+# Write Lines to a Connection.
+writeLines(c(sampleNews), "./sampleNews.txt")
+
+# //3-US.twitter//
+sampleTwitter <- sampler(twitter, .05)
+# Write Lines to a Connection.
+writeLines(c(sampleTwitter), "./sampleTwitter.txt")
