@@ -23,3 +23,10 @@ download.file(dataURL, destfile = "./data/SwiftKey.zip", method = "curl")
 unlink(dataURL, recursive = FALSE, force = FALSE)
 # The bash command unzip is used for opening the archive.
 unzip("./data/SwiftKey.zip")
+
+
+## [02] Reading the SwiftKey Data.
+## ===============================
+enBlogs   <- readLines("./data/final/en_US/en_US.blogs.txt",   encoding = "UTF-8", skipNul = TRUE)
+enNews    <- readLines("./data/final/en_US/en_US.news.txt",    encoding = "UTF-8", skipNul = TRUE)
+enTwitter <- readLines("./data/final/en_US/en_US.twitter.txt", encoding = "UTF-8", skipNul = TRUE)
