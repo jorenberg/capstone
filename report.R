@@ -136,3 +136,17 @@ kable(basic.measures)
 # Characters :1   208361438:1   1010242  :1   162385035:1
 # Text Chunks:1   899288   :1   203791405:1   2360148  :1
 # -------------------------------------------------------------------------------------
+
+
+## [06] Sampling the SwiftKey Data.
+## ================================
+# Setting the seed for reproducibility.
+set.seed(100)
+
+# This function takes a random sample of the data.
+sampler <- function(chunk, percent) {
+  percent <- round(length(chunk)*percent)
+  sample.index <- sample(1:length(chunk), percent)
+  
+  return(chunk[sample.index])
+}
