@@ -14,6 +14,8 @@
 # HomePage      : https://swiftkey.com/en/
 # ==========================================
 
+# Remove Objects from a Specified Environment.
+rm(list = ls())
 
 ## [01] Loading the SwiftKey Data.
 ## ===============================
