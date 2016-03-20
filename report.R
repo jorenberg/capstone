@@ -241,3 +241,34 @@ kable(basic.measures.2)
 # Text Chunks:1         34456   :1   38758   :1   104273 :1
 # Profanity Percent:1   0.2337  :1   0.2327  :1   0.1164 :1
 # -------------------------------------------------------------------------------------
+
+
+## [09] Creating Homogeneity in the Data.
+## ======================================
+## Replace numbers and currency with generic "xnumber" and "xdollars" markers.
+generic.numbers <- function(chunk) {
+  chunk <- gsub(pattern = "[$](([0-9]+)|([,]*))+ +", replacement = "xdollars ", x = chunk)
+  chunk <- gsub(pattern = "\\d+", replacement = "xnumber", x = chunk)
+  chunk <- gsub(pattern = "xnumber,xnumber", replacement = "xnumber", x = chunk)
+  
+  return(chunk)
+}
+
+## Separate text into distinc sentences based on (. , ; :).
+sentence.splitter <- function(chunk) {
+  if(grepl("(*)[.]|[,]|[;];[:] [A-Z](*)", chunk))
+    return(strsplit(chunk, "(*)[.]|[,]|[;]|[:] (*)"))
+  else(return(chunk))
+}
+
+## Combining above functions to get cleaner lists of words.
+cleaner <- function(chunk) {
+  clean.chunks <- vector(mode = "character")
+  for(i in 1:length(chunk)) {
+    clean.chunks <- c(clean.chunks, sentence.splitter(generic.numbers(chunk[i]))[[1]])
+  }
+  # Remove leading and trailing whitespace.
+  clean.chunks <- gsub("^\\s+|\\s+$", "", clean.chunks)
+  
+  return(clean.chunks)
+}
