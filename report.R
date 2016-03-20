@@ -187,3 +187,55 @@ kable(basic.measures.1)
 # Characters :1   10355850:1   10141823:1   118007 :1
 # Text Chunks:1   44964   :1   50512   :1   8124800:1
 # -------------------------------------------------------------------------------------
+
+
+## [08] Profanity Filtering of SwiftKey Sample Data.
+## ================================================
+# First list of bad words:------------------------
+bad.words.1 <- readLines("./data/Bad_Words_1.txt")
+bad.words.1 <- bad.words.1[-length(bad.words.1)]
+
+# Second list of bad words:-----------------------
+bad.words.2 <- readLines("./data/Bad_Words_2.txt")
+bad.words.2 <- bad.words.2[-1]
+
+bad.words.2 <- substr(x = bad.words.2, start = 1, stop = nchar(bad.words.2)-3)
+double.quote.index <- grep(pattern = "\"", x = bad.words.2)
+
+bad.words.2[double.quote.index] <- substr(x = bad.words.2[double.quote.index], start = 2, 
+                                          stop = nchar(bad.words.2[double.quote.index])-1)
+
+all.bad.words <- c(bad.words.1, bad.words.2)
+all.bad.words <- unique(all.bad.words)
+all.bad.words <- paste(all.bad.words, collapse="|")
+all.bad.words <- substr(x = all.bad.words, start = 1, stop = nchar(all.bad.words)-1)
+
+bad.words.blogs   <- grep(all.bad.words, sampleBlogs)
+bad.words.news    <- grep(all.bad.words, sampleNews)
+bad.words.twitter <- grep(all.bad.words, sampleTwitter)
+
+bad.prop.blogs    <- length(bad.words.blogs)/length(sampleBlogs)
+bad.prop.news     <- length(bad.words.news)/length(sampleNews)
+bad.prop.twitter  <- length(bad.words.twitter)/length(sampleTwitter)
+
+sampleBlogs   <- sampleBlogs[-bad.words.blogs]
+sampleNews    <- sampleNews[-bad.words.news]
+sampleTwitter <- sampleTwitter[-bad.words.twitter]
+
+# What percentage of the chunks has profanities?
+# ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ
+basic.measures.2 <- cbind(c("Text Chunks", "Characters", "Profanity Percent"),
+                    rbind(c(length(sampleBlogs),length(sampleNews),length(sampleTwitter)),
+                          c(sum(nchar(sampleBlogs)),sum(nchar(sampleNews)),sum(nchar(sampleTwitter))),
+                          round(c(bad.prop.blogs,bad.prop.news,bad.prop.twitter), 4)))
+colnames(basic.measures.2) <- c("Measure", "Blogs", "News", "Twitter")
+
+kable(basic.measures.2)
+
+# Summaries
+# -------------------------------------------------------------------------------------
+# Measure                 Blogs         News        Twitter
+# Characters :1         6025558 :1   6952821 :1   6980216:1
+# Text Chunks:1         34456   :1   38758   :1   104273 :1
+# Profanity Percent:1   0.2337  :1   0.2327  :1   0.1164 :1
+# -------------------------------------------------------------------------------------
