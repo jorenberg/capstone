@@ -165,3 +165,56 @@ colnames(basic.measures.1) <- c("Measure", "Blogs", "News", "Twitter")
 
 kable(basic.measures.1)
 ```
+
+# Profanity Filtering
+Now, this sampled data set is quite good and likely has a few things I can take out. For starters, [profanity filtering](https://en.wikipedia.org/wiki/Wordfilter) is a good idea. I will reformat and combine two profanity lists first. Then, I will take out any text chunks that contain anything on the list.
+
+<b>Note:</b> The lists used can be found here - <u>[1](https://github.com/iamprabhat/capstone/blob/master/data/Bad_Words_1.txt)</u> &amp; <u>[2](https://github.com/iamprabhat/capstone/blob/master/data/Bad_Words_2.txt)</u>.
+
+```{r Profanity Filtering of SwiftKey Sample Data.}
+# Profanity Filtering of SwiftKey Sample Data.
+# First list of bad words:------------------------
+bad.words.1 <- readLines("./data/Bad_Words_1.txt")
+bad.words.1 <- bad.words.1[-length(bad.words.1)]
+
+# Second list of bad words:-----------------------
+bad.words.2 <- readLines("./data/Bad_Words_2.txt")
+bad.words.2 <- bad.words.2[-1]
+
+bad.words.2 <- substr(x = bad.words.2, start = 1, stop = nchar(bad.words.2)-3)
+double.quote.index <- grep(pattern = "\"", x = bad.words.2)
+
+bad.words.2[double.quote.index] <- substr(x = bad.words.2[double.quote.index], start = 2, 
+                                          stop = nchar(bad.words.2[double.quote.index])-1)
+
+all.bad.words <- c(bad.words.1, bad.words.2)
+all.bad.words <- unique(all.bad.words)
+all.bad.words <- paste(all.bad.words, collapse="|")
+all.bad.words <- substr(x = all.bad.words, start = 1, stop = nchar(all.bad.words)-1)
+
+bad.words.blogs   <- grep(all.bad.words, sampleBlogs)
+bad.words.news    <- grep(all.bad.words, sampleNews)
+bad.words.twitter <- grep(all.bad.words, sampleTwitter)
+
+bad.prop.blogs    <- length(bad.words.blogs)/length(sampleBlogs)
+bad.prop.news     <- length(bad.words.news)/length(sampleNews)
+bad.prop.twitter  <- length(bad.words.twitter)/length(sampleTwitter)
+
+sampleBlogs   <- sampleBlogs[-bad.words.blogs]
+sampleNews    <- sampleNews[-bad.words.news]
+sampleTwitter <- sampleTwitter[-bad.words.twitter]
+```
+
+<b>Note:</b> Now, let’s take a look at the size of the new data set and what percentage of the chunks had profanities.
+
+```{r percentage of the chunks has profanities.}
+# What percentage of the chunks has profanities?
+# ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ
+basic.measures.2 <- cbind(c("Text Chunks", "Characters", "Profanity Percent"),
+                    rbind(c(length(sampleBlogs),length(sampleNews),length(sampleTwitter)),
+                          c(sum(nchar(sampleBlogs)),sum(nchar(sampleNews)),sum(nchar(sampleTwitter))),
+                          round(c(bad.prop.blogs,bad.prop.news,bad.prop.twitter), 4)))
+colnames(basic.measures.2) <- c("Measure", "Blogs", "News", "Twitter")
+
+kable(basic.measures.2)
+```
