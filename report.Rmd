@@ -12,3 +12,6 @@ output:
 The goal of this project is just to display that I've gotten used to working with the [SwiftKey, Inc.](https://swiftkey.com/en/) data and that I'm on track to create the prediction algorithm. I will explain my exploratory analysis and my goals for the eventual app and algorithm.
 
 The objective of this project is to: (1). Demonstration of how to download the data and have successfully loaded it in, (2). Create a basic report of summary statistics about the data sets, (3). Report any interesting findings that I amassed so far, and (4). Get feedback on my plans for creating a prediction algorithm and Shiny app.
+
+# Data Acquisition
+I have acquired the data from given URL, [Coursera-SwiftKey.zip](https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip). Further, unzipped the data in to ```data``` directory, by help of bash command ```unzip``` <i>i.e.</i>, is used for opening the archive; ```unzip("./data/Coursera-SwiftKey.zip")```.
