@@ -167,3 +167,23 @@ writeLines(c(sampleNews), "./sampleNews.txt")
 sampleTwitter <- sampler(twitter, .05)
 # Write Lines to a Connection.
 writeLines(c(sampleTwitter), "./sampleTwitter.txt")
+
+
+## [07] Basic descriptive measures of the size of sample text.
+## ===========================================================
+## working with knitr:
+library(knitr)
+
+basic.measures.1 <- cbind(c("Text Chunks", "Characters"),
+                  rbind(c(length(sampleBlogs),length(sampleNews),length(sampleTwitter)),
+                        c(sum(nchar(sampleBlogs)),sum(nchar(sampleNews)),sum(nchar(sampleTwitter)))))
+colnames(basic.measures.1) <- c("Measure", "Blogs", "News", "Twitter")
+
+kable(basic.measures.1)
+
+# Summaries
+# -------------------------------------------------------------------------------------
+# Measure           Blogs         News        Twitter
+# Characters :1   10355850:1   10141823:1   118007 :1
+# Text Chunks:1   44964   :1   50512   :1   8124800:1
+# -------------------------------------------------------------------------------------
