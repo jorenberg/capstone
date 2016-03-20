@@ -115,3 +115,53 @@ colnames(basic.measures) <- c("Measure", "Blogs", "News", "Twitter")
 
 kable(basic.measures)
 ```
+
+# Data Sampling
+Because the files are so large, I will take only a random <b>05% sample of the data</b>, from all three data sets. This will decrease overall computation time and allow for quicker experimentation with the data.
+
+```{r Sampling the Data.}
+# Sampling the SwiftKey Data.
+# Setting the seed for reproducibility.
+set.seed(100)
+
+# This function takes a random sample of the data.
+sampler <- function(chunk, percent) {
+  percent <- round(length(chunk)*percent)
+  sample.index <- sample(1:length(chunk), percent)
+  
+  return(chunk[sample.index])
+}
+
+# Let's start off with a 05% sample data.
+#                       -----
+# //1-US.blogs//
+sampleBlogs <- sampler(blogs, .05)
+# Write Lines to a Connection.
+writeLines(c(sampleBlogs), "./sampleBlogs.txt")
+
+# //2-US.news//
+sampleNews <- sampler(news, .05)
+# Write Lines to a Connection.
+writeLines(c(sampleNews), "./sampleNews.txt")
+
+# //3-US.twitter//
+sampleTwitter <- sampler(twitter, .05)
+# Write Lines to a Connection.
+writeLines(c(sampleTwitter), "./sampleTwitter.txt")
+
+```
+
+<b>Note:</b> Let’s take a look at some basic descriptive measures of the size of the text.
+
+```{r Basic descriptive measures of sample text.}
+# Basic descriptive measures of the size of sample text.
+# working with knitr:
+library(knitr)
+
+basic.measures.1 <- cbind(c("Text Chunks", "Characters"),
+                  rbind(c(length(sampleBlogs),length(sampleNews),length(sampleTwitter)),
+                        c(sum(nchar(sampleBlogs)),sum(nchar(sampleNews)),sum(nchar(sampleTwitter)))))
+colnames(basic.measures.1) <- c("Measure", "Blogs", "News", "Twitter")
+
+kable(basic.measures.1)
+```
