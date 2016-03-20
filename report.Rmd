@@ -15,3 +15,8 @@ The objective of this project is to: (1). Demonstration of how to download the d
 
 # Data Acquisition
 I have acquired the data from given URL, [Coursera-SwiftKey.zip](https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip). Further, unzipped the data in to ```data``` directory, by help of bash command ```unzip``` <i>i.e.</i>, is used for opening the archive; ```unzip("./data/Coursera-SwiftKey.zip")```.
+
+```{r Environment Cleaning.}
+# Remove Objects from a Specified Environment.
+rm(list = ls())
+```
