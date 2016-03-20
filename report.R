@@ -282,3 +282,7 @@ enTwitterList   <- cleaner(sampleTwitter); rm(sampleTwitter);
 enBlogsList     <- enBlogsList[enBlogsList != ""]
 enNewsList      <- enNewsList[enNewsList != ""]
 enTwitterList   <- enTwitterList[enTwitterList != ""]
+
+# To Write Cleaned Sample Data.
+# Ω - 19.3 MB
+writeLines(c(enBlogsList, enNewsList, enTwitterList), "./clean_sample_data.txt")
