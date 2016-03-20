@@ -277,3 +277,8 @@ cleaner <- function(chunk) {
 enBlogsList     <- cleaner(sampleBlogs);     rm(sampleBlogs);
 enNewsList      <- cleaner(sampleNews);       rm(sampleNews);
 enTwitterList   <- cleaner(sampleTwitter); rm(sampleTwitter);
+
+# Removing empty entries from the list.
+enBlogsList     <- enBlogsList[enBlogsList != ""]
+enNewsList      <- enNewsList[enNewsList != ""]
+enTwitterList   <- enTwitterList[enTwitterList != ""]
