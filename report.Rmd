@@ -61,3 +61,57 @@ saveRDS(twitter, "./enTwitter.rds")
 # the row names determine the number of rows.
 data.frame(blogs = length(blogs), news = length(news), twitter = length(twitter))
 ```
+
+# Summary Statistics
+I have performed Summary Statistics for three files only - en_US.blogs.txt, en_US.news.txt, and en_US.twitter.txt.
+```{r Summary Statistics.}
+# Summary Statistics for the 3 files - en_US.blogs/en_US.news/en_US.twitter
+blogwords    <- sum(stri_count_words(blogs))
+newswords    <- sum(stri_count_words(news))
+twitterwords <- sum(stri_count_words(twitter))
+# Combine Values into a Vector or List,
+# This is a generic function which combines its arguments.
+words        <- c(blogwords, newswords, twitterwords)
+
+bloglines    <- length(blogs)
+newslines    <- length(news)
+twitterlines <- length(twitter)
+# Combine Values into a Vector or List,
+# This is a generic function which combines its arguments.
+lines        <- c(bloglines, newslines, twitterlines)
+
+blogmaxc     <- max(nchar(blogs))
+newsmaxc     <- max(nchar(news))
+twittermaxc  <- max(nchar(twitter))
+# Combine Values into a Vector or List,
+# This is a generic function which combines its arguments.
+maxchars     <- c(blogmaxc, newsmaxc, twittermaxc)
+
+blogmaxw     <- max(stri_count_words(blogs))
+newsmaxw     <- max(stri_count_words(news))
+twittermaxw  <- max(stri_count_words(twitter))
+# Combine Values into a Vector or List,
+# This is a generic function which combines its arguments.
+maxwords     <- c(blogmaxw, newsmaxw, twittermaxw)
+
+FileSumm     <- data.frame("File Name" = c("en_US.blogs", "en_US.news", "en_US.twitter"),
+                           NumberLines = lines,
+                           NumberWords = words,
+                           MaxChars = maxchars,
+                           MaxWords = maxwords)
+```
+
+Also, I did some basic descriptive measures of the size of the text.
+
+```{r Basic descriptive measures.}
+# Basic descriptive measures of the size of the text.
+# working with knitr:
+library(knitr)
+
+basic.measures <- cbind(c("Text Chunks", "Characters"),
+                  rbind(c(length(blogs),length(news),length(twitter)),
+                        c(sum(nchar(blogs)),sum(nchar(news)),sum(nchar(twitter)))))
+colnames(basic.measures) <- c("Measure", "Blogs", "News", "Twitter")
+
+kable(basic.measures)
+```
