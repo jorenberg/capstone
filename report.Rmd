@@ -1,1 +1,9 @@
 ---
+title: "Exploratory Data Analysis and Modeling: Milestone Report"
+author: "Prabhat Kumar"
+date: "18 March 2016"
+output: 
+  html_document: 
+    number_sections: yes
+    toc: yes
+---
