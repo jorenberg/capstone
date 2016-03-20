@@ -272,3 +272,8 @@ cleaner <- function(chunk) {
   
   return(clean.chunks)
 }
+
+# Applying cleaner function, to get cleaner lists of words.
+enBlogsList     <- cleaner(sampleBlogs);     rm(sampleBlogs);
+enNewsList      <- cleaner(sampleNews);       rm(sampleNews);
+enTwitterList   <- cleaner(sampleTwitter); rm(sampleTwitter);
