@@ -274,3 +274,56 @@ enTwitterList   <- enTwitterList[enTwitterList != ""]
 # Ω - 19.3 MB
 writeLines(c(enBlogsList, enNewsList, enTwitterList), "./clean_sample_data.txt")
 ```
+
+# Computational Linguistics
+Now, with this reduced and consistent data structure, I can look at how often <b>groups of words</b> show up. I will focus on frequencies of individual terms, two terms, and three terms. These are known as <b>n-grams</b> and they are a common tool in computational linguistics.
+
+The following two functions create the ```n-grams``` and their ```frequency counts```. These are applied to the,
+
+1. [blogs data](https://github.com/iamprabhat/capstone/data/final/en_US/en_US.blogs.txt),
+2. [news data](https://github.com/iamprabhat/capstone/data/final/en_US/en_US.news.txt), and
+3. [twitter data](https://github.com/iamprabhat/capstone/data/final/en_US/en_US.twitter.txt)
+
+to produce data for plotting, through ```n-gram``` analysis.
+
+```{r Computational Linguistics.}
+# Computational Linguistics.
+# A function that creates n-grams.
+# ================================
+# an n-gram is a contiguous sequence of n-items from a given sequence of text or speech.
+# An n-gram of size 1 is referred to as a "unigram";
+# size 2 is a "bigram" (or, less commonly, a "digram");
+# size 3 is a "trigram".
+n.gram <- function(sentence, n) {
+  sent <- strsplit(sentence, split = " ")
+  
+  if(length(sent[[1]]) < n)
+    return()
+  ns <- vector(mode = "character", length = length(sent[[1]])-n+1)
+  for(i in 1:(length(sent[[1]])-n+1)) {
+    ns[i] <- paste((sent[[1]][i:(i+n-1)]), collapse = " ")
+  }
+  
+  return(ns)
+}
+
+## n-gram Example.
+n.gram(enTwitterList[100], 2)
+
+## Returning a table of frequency counts for n-grams.
+n.gram.table <- function(word_list, n) {
+  n.gram.medium <- sapply(word_list, n.gram, n = n)
+  n.gram.medium <- table(unlist(n.gram.medium))
+  
+  props <- n.gram.medium/sum(n.gram.medium)
+  
+  n.gram.medium <- data.frame(n.gram.medium, props)
+  colnames(n.gram.medium) <- c("N.Gram", "Freq"," ", "Prop")
+  n.gram.medium <- n.gram.medium[order(-n.gram.medium$Prop),]
+  
+  #--// Setup for plotting //--
+  n.gram.medium$N.Gram <- factor(n.gram.medium$N.Gram, levels = n.gram.medium$N.Gram[order(n.gram.medium$Freq)])
+  
+  return(n.gram.medium[,-3])
+}
+```
