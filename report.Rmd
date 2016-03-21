@@ -384,3 +384,26 @@ n.gram.plot(twitter.2.gram, 10, "Twitter bigram Relative Proportions.")
 ```{r trigram plot.}
 n.gram.plot(twitter.3.gram, 10, "Twitter trigram Relative Proportions.")
 ```
+
+# Interesting Findings
+Looking at the graphs above, We can clearly see that as the <b>“n”</b> in ```n-gram``` increases, the absolute proportions fall precipitously. Also, as <b>"n"</b> increases the proportions seem to flatten out quickly. The top two ```3-gram``` entries are actually saying the same thing but the capital “T” leads to two different counts. <b>This is something to keep in mind going forward.</b>
+
+# Plans for Prediction Algorithm
+<b>Good Sense:</b> Clean and reliable data are key to building a good model.
+
+Scrubbing the data meticulously should be the first step in building the algorithm. The code above is a good start to cleaning the data but it still needs some work. Some issues to consider going forward are:
+
+1. Capital and lowercase letters/terms in ```n-grams```,
+2. Better structures to hold and manipulate the data,
+3. Dealing with currency, numbers, times, and dates correctly, and
+4. Spellchecking and handling misspellings.
+
+<b>Note:</b> I will also explore 4 word combinations and may be able to be even more accurate at that level.
+
+I am exploring several options for the model’s structure. A simple starting point is to predict using the last word from observed ```n-grams```. Several predictions could be ranked in order of their observed past frequencies. The most frequently observed last word from the ```n-gram``` will be the first prediction. This model is pretty simple when sticking to ```n-grams``` of a particular size, like two.
+
+However, larger ```n-grams``` still need to be considered along with their interactions with smaller ```n-grams```. Overall differences between the text sources need to be analyzed before the data are lumped together into the model. These include difference in style, sentence structure, term frequencies, spelling, and ```n-gram``` distributions. This analysis is beyond the scope of this milestone report, but it will be considered during subsequent steps in the project.
+
+<b>Created by:</b> [Prabhat Kumar](http://prabhatkumar.org/), 18-March-2016.
+
+Thanks.
