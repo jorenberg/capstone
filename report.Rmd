@@ -348,3 +348,39 @@ twitter.1.gram <- n.gram.table(enTwitterList, n = 1)
 twitter.2.gram <- n.gram.table(enTwitterList, n = 2)
 twitter.3.gram <- n.gram.table(enTwitterList, n = 3)
 ```
+
+# Plotting of the SwiftKey Data
+Finally, I can plot the relative proportions of the ```n-grams```. I choose to plot proportions because they highlight the popularity of the ```n-grams``` relative to each other and relative to the whole data set. The top ten most frequent ```n-grams``` are displayed.
+
+<b>Note:</b> The twitter data are chosen here specifically but this can easily be applied to the other data sets, also.
+
+```{r function that plot n-grams.}
+library(ggplot2)
+# http://ggplot2.org/
+library(RColorBrewer)
+# http://colorbrewer2.org/
+
+# A function that plot n-grams.
+n.gram.plot <- function(n.gram.df, topn, name) {
+  custom.pal <- colorRampPalette(brewer.pal(6,"Blues"))(15)
+  
+  ggplot(n.gram.df[1:topn,], aes(x = N.Gram, y = Prop, fill = Prop)) + 
+    geom_bar(stat = "identity") + 
+    scale_fill_gradient(low = custom.pal[5], high = custom.pal[10]) + 
+    ggtitle(name) + 
+    coord_flip() + 
+    theme(legend.position = "none")
+}
+```
+
+```{r unigram plot.}
+n.gram.plot(twitter.1.gram, 10, "Twitter unigram Relative Proportions.")
+```
+
+```{r bigram plot.}
+n.gram.plot(twitter.2.gram, 10, "Twitter bigram Relative Proportions.")
+```
+
+```{r trigram plot.}
+n.gram.plot(twitter.3.gram, 10, "Twitter trigram Relative Proportions.")
+```
