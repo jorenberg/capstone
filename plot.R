@@ -33,6 +33,12 @@ n.gram.plot <- function(n.gram.df, topn, name) {
     theme(legend.position = "none")
 }
 
+# blogs n-grams plot.
+n.gram.plot(blogs.1.gram, 10, "Blogs unigram Relative Proportions.")
+n.gram.plot(blogs.2.gram, 10, "Blogs bigram Relative Proportions.")
+n.gram.plot(blogs.3.gram, 10, "Blogs trigram Relative Proportions.")
+
+# twitter n-grams plot.
 n.gram.plot(twitter.1.gram, 10, "Twitter unigram Relative Proportions.")
 n.gram.plot(twitter.2.gram, 10, "Twitter bigram Relative Proportions.")
 n.gram.plot(twitter.3.gram, 10, "Twitter trigram Relative Proportions.")
