@@ -218,3 +218,59 @@ colnames(basic.measures.2) <- c("Measure", "Blogs", "News", "Twitter")
 
 kable(basic.measures.2)
 ```
+
+# Homogeneity in the Data
+With the reduced clean data set; Now, I can focus on dealing with numbers and individual sentences. I decided to replace all of the numbers in the data with generic ```“xnumber”``` and ```“xdollar”``` strings. By trading the unique numbers for standard markers, I have created some homogeneity in the data.
+
+<b>Note:</b> This will make it easier to count and analyze terms right before and after the markers.
+
+The text chunks each contain multiple sentences and distinct word combinations. Simply taking out punctuation and merging the chunks will distort the true order of the words. Ideas are typically separated with periods, commas, semicolons, and colons. I decided to split the data on these to preserve the associations between groups of words and prevent unrelated words from merging.
+
+The following code chunk creates functions that deal with generic numbers and sentence splitting.
+
+<b>Note:</b> These are then combined and applied to the data [output size: ~19.3 MB].
+
+```{r Homogeneity in the Data.}
+# Creating Homogeneity in the Data.
+# Replace numbers and currency with generic "xnumber" and "xdollars" markers.
+generic.numbers <- function(chunk) {
+  chunk <- gsub(pattern = "[$](([0-9]+)|([,]*))+ +", replacement = "xdollars ", x = chunk)
+  chunk <- gsub(pattern = "\\d+", replacement = "xnumber", x = chunk)
+  chunk <- gsub(pattern = "xnumber,xnumber", replacement = "xnumber", x = chunk)
+  
+  return(chunk)
+}
+
+## Separate text into distinc sentences based on (. , ; :).
+sentence.splitter <- function(chunk) {
+  if(grepl("(*)[.]|[,]|[;];[:] [A-Z](*)", chunk))
+    return(strsplit(chunk, "(*)[.]|[,]|[;]|[:] (*)"))
+  else(return(chunk))
+}
+
+## Combining above functions to get cleaner lists of words.
+cleaner <- function(chunk) {
+  clean.chunks <- vector(mode = "character")
+  for(i in 1:length(chunk)) {
+    clean.chunks <- c(clean.chunks, sentence.splitter(generic.numbers(chunk[i]))[[1]])
+  }
+  # Remove leading and trailing whitespace.
+  clean.chunks <- gsub("^\\s+|\\s+$", "", clean.chunks)
+  
+  return(clean.chunks)
+}
+
+# Applying cleaner function, to get cleaner lists of words.
+enBlogsList     <- cleaner(sampleBlogs);     rm(sampleBlogs);
+enNewsList      <- cleaner(sampleNews);       rm(sampleNews);
+enTwitterList   <- cleaner(sampleTwitter); rm(sampleTwitter);
+
+# Removing empty entries from the list.
+enBlogsList     <- enBlogsList[enBlogsList != ""]
+enNewsList      <- enNewsList[enNewsList != ""]
+enTwitterList   <- enTwitterList[enTwitterList != ""]
+
+# To Write Cleaned Sample Data.
+# Ω - 19.3 MB
+writeLines(c(enBlogsList, enNewsList, enTwitterList), "./clean_sample_data.txt")
+```
