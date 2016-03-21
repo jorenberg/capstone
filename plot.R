@@ -38,6 +38,11 @@ n.gram.plot(blogs.1.gram, 10, "Blogs unigram Relative Proportions.")
 n.gram.plot(blogs.2.gram, 10, "Blogs bigram Relative Proportions.")
 n.gram.plot(blogs.3.gram, 10, "Blogs trigram Relative Proportions.")
 
+# news n-grams plot.
+n.gram.plot(news.1.gram, 10, "News unigram Relative Proportions.")
+n.gram.plot(news.2.gram, 10, "News bigram Relative Proportions.")
+n.gram.plot(news.3.gram, 10, "News trigram Relative Proportions.")
+
 # twitter n-grams plot.
 n.gram.plot(twitter.1.gram, 10, "Twitter unigram Relative Proportions.")
 n.gram.plot(twitter.2.gram, 10, "Twitter bigram Relative Proportions.")
