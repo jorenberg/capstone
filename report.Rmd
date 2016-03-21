@@ -33,7 +33,7 @@ enTwitter <- readLines("./data/final/en_US/en_US.twitter.txt", encoding = "UTF-8
 # Cleaning the SwiftKey Data
 After, loading the data, I did cleaning of the acquired data. For this work, I've used [stringi](http://www.rexamine.com/resources/stringi/) R library.
 
-Note: Upon examination, there is some removal of non english characters to need to be done to make the data more usable.
+<b>Note:</b> Upon examination, there is some removal of non english characters to need to be done to make the data more usable.
 
 ```{r Cleaning the SwiftKey Data.}
 # working with stringi:
@@ -151,7 +151,7 @@ writeLines(c(sampleTwitter), "./sampleTwitter.txt")
 
 ```
 
-<b>Note:</b> Let’s take a look at some basic descriptive measures of the size of the text.
+<b>Note:</b> Let’s take a look at some basic descriptive measures of the size of the sample text.
 
 ```{r Basic descriptive measures of sample text.}
 # Basic descriptive measures of the size of sample text.
@@ -159,8 +159,8 @@ writeLines(c(sampleTwitter), "./sampleTwitter.txt")
 library(knitr)
 
 basic.measures.1 <- cbind(c("Text Chunks", "Characters"),
-                  rbind(c(length(sampleBlogs),length(sampleNews),length(sampleTwitter)),
-                        c(sum(nchar(sampleBlogs)),sum(nchar(sampleNews)),sum(nchar(sampleTwitter)))))
+                    rbind(c(length(sampleBlogs),length(sampleNews),length(sampleTwitter)),
+                          c(sum(nchar(sampleBlogs)),sum(nchar(sampleNews)),sum(nchar(sampleTwitter)))))
 colnames(basic.measures.1) <- c("Measure", "Blogs", "News", "Twitter")
 
 kable(basic.measures.1)
