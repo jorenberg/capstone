@@ -330,6 +330,16 @@ n.gram.table <- function(word_list, n) {
   return(n.gram.medium[,-3])
 }
 
+#--// Setup for blogs n-grams //-
+blogs.1.gram <- n.gram.table(enBlogsList, n = 1)
+blogs.2.gram <- n.gram.table(enBlogsList, n = 2)
+blogs.3.gram <- n.gram.table(enBlogsList, n = 3)
+
+#--// Setup for news n-grams //-
+news.1.gram <- n.gram.table(enNewsList, n = 1)
+news.2.gram <- n.gram.table(enNewsList, n = 2)
+news.3.gram <- n.gram.table(enNewsList, n = 3)
+
 #--// Setup for twitter n-grams //-
 twitter.1.gram <- n.gram.table(enTwitterList, n = 1)
 twitter.2.gram <- n.gram.table(enTwitterList, n = 2)
