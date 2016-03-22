@@ -15,3 +15,7 @@ Note: A number of modeling methods from machine learning, artificial intelligenc
 Predictive Models
 -----------------
 Nearly any regression model can be used for prediction purposes. Broadly speaking, there are two classes of predictive models: parametric and non-parametric. Parametric models make “specific assumptions with regard to one or more of the population parameters that characterize the underlying distribution(s)”, while non-parametric regressions make fewer assumptions than their parametric counterparts. A third class, semi-parametric models, includes features of both.
+
+Algorithms
+----------
+The goal of selecting and fitting a predictive algorithm is to achieve the best possible performance. Achieving performance goals involves three factors: (1) complexity of the problem, (2) complexity of the algorithmic model employed, and (3) the amount as well as richness of the data available.
