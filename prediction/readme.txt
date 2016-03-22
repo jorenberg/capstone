@@ -11,3 +11,7 @@ Predictive modelling is the process of creating, testing and validating a model 
 For example, predictive models are often used to detect crimes and identify suspects, after the crime has taken place. In many cases the model is chosen on the basis of detection theory to try to guess the probability of an outcome given a set amount of input data, for example given an e-mail determining how likely that it is "spam". Depending on definitional boundaries, predictive modelling is synonymous with, or largely overlapping with, the field of machine learning, as it is more commonly referred to in academic or research and development contexts. When deployed commercially, predictive modelling is often referred to as predictive analytics.
 
 Note: A number of modeling methods from machine learning, artificial intelligence, and statistics are available in predictive analytics.
+
+Predictive Models
+-----------------
+Nearly any regression model can be used for prediction purposes. Broadly speaking, there are two classes of predictive models: parametric and non-parametric. Parametric models make “specific assumptions with regard to one or more of the population parameters that characterize the underlying distribution(s)”, while non-parametric regressions make fewer assumptions than their parametric counterparts. A third class, semi-parametric models, includes features of both.
