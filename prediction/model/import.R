@@ -38,3 +38,6 @@ twitter <- iconv(enTwitter, from = "latin1", to = "UTF-8", sub = "")
 # Replace Occurrences of a Pattern.
 twitter <- stri_replace_all_regex(twitter, "\u2019|`","'")
 twitter <- stri_replace_all_regex(twitter, "\u201c|\u201d|u201f|``",'"')
+
+# ¬ Creating a Directory/Folder.
+dir.create("data/profanity", showWarnings = TRUE)
