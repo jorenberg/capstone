@@ -13,3 +13,7 @@
 # Data Source   : SwiftKey, Inc.
 # HomePage      : https://swiftkey.com/en/
 # ==========================================
+
+
+# Ω - Remove Objects from a Specified Environment.
+rm(list = ls())
