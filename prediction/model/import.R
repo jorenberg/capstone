@@ -17,3 +17,8 @@
 
 # Ω - Remove Objects from a Specified Environment.
 rm(list = ls())
+
+# ¬ Reading the SwiftKey Data.
+enBlogs   <- readLines("./data/final/en_US/en_US.blogs.txt",   encoding = "UTF-8", skipNul = TRUE)
+enNews    <- readLines("./data/final/en_US/en_US.news.txt",    encoding = "UTF-8", skipNul = TRUE)
+enTwitter <- readLines("./data/final/en_US/en_US.twitter.txt", encoding = "UTF-8", skipNul = TRUE)
