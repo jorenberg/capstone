@@ -46,3 +46,21 @@ if (!"./data/profanity" %in% dir("./data/")) {
 } else {
   list.dirs()
 }
+
+# ¬ Basic descriptive measures of the size of the text.
+# working with knitr:
+library(knitr)
+
+basic.measures <- cbind(c("Text Chunks", "Characters"),
+                        rbind(c(length(blogs),length(news),length(twitter)),
+                              c(sum(nchar(blogs)),sum(nchar(news)),sum(nchar(twitter)))))
+colnames(basic.measures) <- c("Measure", "Blogs", "News", "Twitter")
+
+kable(basic.measures)
+
+# Summaries
+# -------------------------------------------------------------------------------------
+# Measure           Blogs           News        Twitter
+# Characters :1   208361438:1   1010242  :1   162385035:1
+# Text Chunks:1   899288   :1   203791405:1   2360148  :1
+# -------------------------------------------------------------------------------------
