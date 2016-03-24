@@ -13,3 +13,7 @@
 # Data Source   : SwiftKey, Inc.
 # HomePage      : https://swiftkey.com/en/
 # ==========================================
+
+
+# Ω - Specified Environment Access.
+envir = .GlobalEnv
