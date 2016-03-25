@@ -31,3 +31,12 @@ using namespace Rcpp;
 // You can include R code blocks in C++ files processed with sourceCpp
 // (useful for testing and development).
 // The R code will be automatically, run after the compilation.
+
+
+// Implementation of the following
+// A. Clustering Algorithms:-
+//    A1. K-means, and
+//    A2. Kernel K-means.
+// B. Supervised Clustering Evaluation Metrics:
+//    B1. Purity, and
+//    B2. NMI - Normalized Mutual Information.
