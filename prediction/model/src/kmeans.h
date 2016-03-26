@@ -40,3 +40,4 @@
 // This results in a partitioning of the data space into Voronoi cells.
 
 // Computational Complexity: NP-hard
+// Type                    : Heuristic
