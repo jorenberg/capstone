@@ -36,3 +36,4 @@ using namespace Rcpp;
 
 
 // @file          : kmeans.cpp
+// @author        : Prabhat Kumar
