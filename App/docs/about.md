@@ -20,3 +20,5 @@ One cornerstone of their smart keyboard is <b>Predictive Text Models</b>, based 
 - Clustering [k-means and Kernel k-means] - C<sup>++</sup>.
 - IDE - RStudio®
 - Environment – Mac OSX [10.11.4].
+
+<b>Built</b> with [R](http://www.r-project.org/) & [Shiny](http://shiny.rstudio.com).
