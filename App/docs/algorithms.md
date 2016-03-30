@@ -59,3 +59,5 @@ blogs.3.gram <- n.gram.table(enBlogsList, n = 3)
 ```
 
 <b>Built</b> with [R](http://www.r-project.org/) & [Shiny](http://shiny.rstudio.com).
+
+Copyright © 2016, [Prabhat Kumar](http://prabhatkumar.org/), All rights reserved.
