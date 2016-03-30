@@ -48,3 +48,12 @@ n.gram.table <- function(word_list, n) {
   return(n.gram.medium[,-3])
 }
 ```
+
+Suppose, we have to calculate ```n-grams``` for blogs data, use this code:
+
+```{r}
+#--// Setup for blogs n-grams //-
+blogs.1.gram <- n.gram.table(enBlogsList, n = 1)
+blogs.2.gram <- n.gram.table(enBlogsList, n = 2)
+blogs.3.gram <- n.gram.table(enBlogsList, n = 3)
+```
