@@ -7,3 +7,5 @@
 <b>Citation:</b>
 
 Prabhat Kumar (2016), <i>Capstone®: Building a data product using real-world data.</i>
+
+<b>Built</b> with [R](http://www.r-project.org/) & [Shiny](http://shiny.rstudio.com).
