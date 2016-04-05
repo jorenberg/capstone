@@ -21,3 +21,5 @@ An n-gram of size 1 is referred to as a "unigram"; size 2 is a "bigram" (or, les
 Predictive modeling is the process of creating, testing and validating a model to best predict the probability of an outcome.
 
 <b>Built</b> with [R](http://www.r-project.org/) & [Shiny](http://shiny.rstudio.com).
+
+Copyright © 2016, [Prabhat Kumar](http://prabhatkumar.org/), All rights reserved.
