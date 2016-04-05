@@ -14,3 +14,8 @@ Natural language processing (NLP) is a field of computer science, artificial int
 In the fields of computational linguistics and probability, an n-gram is a contiguous sequence of n-items from a given sequence of text or speech. The items can be phonemes, syllables, letters, words or base pairs according to the application. The n-grams typically are collected from a text or speech corpus.
 
 An n-gram of size 1 is referred to as a "unigram"; size 2 is a "bigram" (or, less commonly, a "digram"); and size 3 is a "trigram".
+
+<b>Q4.: What is Predictive modeling?</b>
+
+<b>Ans:</b>
+Predictive modeling is the process of creating, testing and validating a model to best predict the probability of an outcome.
